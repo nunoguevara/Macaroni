@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        fprintf(stderr, "ERROR: One argument is required!\n");
+        fprintf(stderr, "ERROR: At least one argument is required!\n");
         return 1;
     }
 
