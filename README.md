@@ -2,6 +2,8 @@
 A simple and stupid file creation utility for terminal I made while craving some foods
 
 ![Static Badge](https://img.shields.io/badge/version-0.1.0-green?style=for-the-badge&logo=GitHub&logoColor=%23ffffff)
+![GitHub License](https://img.shields.io/github/license/nunoguevara/Macaroni?style=for-the-badge)
+
 ## Features
 - Lightweight and minuscule⚡
 - Multi-file creation📂
