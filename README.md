@@ -2,8 +2,8 @@
 A simple and stupid file creation utility for terminal I made while craving some foods
 
 ## Features
-- Lightweight and minuscule
-- Multi-file creation 
+- Lightweight and minuscule⚡
+- Multi-file creation📂
 
 ## Installation
 To install it (though Idk why anyone would install it), you can just build from source especially because it's lightweight
@@ -26,7 +26,7 @@ cmake --install build
 Or if you need to install it system-wide, you can run:
 ```Shell
 cmake --build build
-cmake --install build
+sudo cmake --install build
 ```
 
 Now it's ready and you can run it with:
