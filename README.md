@@ -17,7 +17,9 @@ git clone --depth 1 https://github.com/nunoguevara/Macaroni.git
 cd Macaroni
 ```
 After that, you can configure your build with (You can customize the configuration to your liking):
-`cmake -S . -B build`
+```Shell
+cmake -S . -B build
+```
 And then run:
 ```Shell
 cmake --build build
