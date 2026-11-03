@@ -31,11 +31,14 @@ sudo cmake --install build
 
 ## Usage
 You can use it to create a single file, e.g:
-
-`macaroni textfile.txt`
+```Shell
+macaroni textfile.txt
+```
 
 Or even multiple files:
 
-`macaroni textfile.txt textfile1.txt textfile2.txt`
+```Shell
+macaroni textfile.txt textfile1.txt textfile2.txt
+```
 
 And it doesn't overwrite existing files, so don't worry!
