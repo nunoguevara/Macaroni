@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        fprintf(stderr, "ERROR: At least one argument is required!\n");
+        fprintf(stderr, "%sERROR%s: At least one argument is required!\n", RED, RESET_COLOR);
         return 1;
     }
 
