@@ -34,12 +34,12 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    char buffer[2049];
+    char buffer[4097];
     ssize_t readBytes;
     
     int lineNum = 1;
     int atLineStart = 1;
-    while(isPrintLineNum && (readBytes = read(file, buffer, 2048)) > 0) {
+    while(isPrintLineNum && (readBytes = read(file, buffer, 4096)) > 0) {
         for (ssize_t i = 0; i < readBytes; i++) {
             if (atLineStart) {
                 char lineNumBuffer[19];
@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    while((readBytes = read(file, buffer, 2048)) > 0) {
+    while((readBytes = read(file, buffer, 4096)) > 0) {
         buffer[readBytes] = '\0';
         write(1, buffer, readBytes);
     }
