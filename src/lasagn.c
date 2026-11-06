@@ -5,8 +5,48 @@
 
 #define BUFFER_SIZE 4096
 
-int printLineNum() {
+int printLineNum(int file, char *buffer, ssize_t readBytes) {
+    int lineNum = 1;
+    int atLineStart = 1;
+    
+    while((readBytes = read(file, buffer, BUFFER_SIZE)) > 0) {
+        for (ssize_t i = 0; i < readBytes; i++) {
+            if (atLineStart) {
+                char lineNumBuffer[19];
+                int lenLNB = snprintf(lineNumBuffer, sizeof(lineNumBuffer), "%6d | ", lineNum);
+                
+                if (lenLNB < 0) {
+                    char encFailure[] = "ERROR: Encoding failure!";
+                    write(1, encFailure, sizeof(encFailure));
+                    return -1;
+                }
 
+                if (lenLNB >= sizeof(lineNumBuffer)) {
+                    char truncFailure[] = "ERROR: Truncation occured!";
+                    write(1, truncFailure, sizeof(truncFailure)); 
+                    return -1;
+                }
+
+                write(1, lineNumBuffer, lenLNB);
+                lineNum++;
+                atLineStart = 0;
+            }
+
+            write(1, &buffer[i], 1);
+
+            if (buffer[i] == '\n') {
+                atLineStart = 1;
+            }
+        }
+    }
+
+    if (readBytes == -1) {
+        char errorRead[] = "ERROR: Failed to read file!\n";
+        write(1, errorRead, sizeof(errorRead));
+        return -1;
+    }
+    
+    return 0;
 }
 
 int main(int argc, char *argv[]) {
@@ -39,37 +79,8 @@ int main(int argc, char *argv[]) {
     char buffer[BUFFER_SIZE + 1];
     ssize_t readBytes;
     
-    int lineNum = 1;
-    int atLineStart = 1;
-    while(isPrintLineNum && (readBytes = read(file, buffer, BUFFER_SIZE)) > 0) {
-        for (ssize_t i = 0; i < readBytes; i++) {
-            if (atLineStart) {
-                char lineNumBuffer[19];
-                int lenLNB = snprintf(lineNumBuffer, sizeof(lineNumBuffer), "%6d | ", lineNum);
-                
-                if (lenLNB < 0) {
-                    char encFailure[] = "ERROR: Encoding failure!";
-                    write(1, encFailure, sizeof(encFailure));
-                    return -1;
-                }
-
-                if (lenLNB >= sizeof(lineNumBuffer)) {
-                    char truncFailure[] = "ERROR: Truncation occured!";
-                    write(1, truncFailure, sizeof(truncFailure)); 
-                    return -1;
-                }
-
-                write(1, lineNumBuffer, lenLNB);
-                lineNum++;
-                atLineStart = 0;
-            }
-
-            write(1, &buffer[i], 1);
-
-            if (buffer[i] == '\n') {
-                atLineStart = 1;
-            }
-        }
+    if (isPrintLineNum) {
+        printLineNum(file, buffer, readBytes);
     }
 
     while((readBytes = read(file, buffer, BUFFER_SIZE)) > 0) {
