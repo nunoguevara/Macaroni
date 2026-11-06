@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.31)
-project(Macaroni LANGUAGES C)
+project(Pazt LANGUAGES C)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-add_executable(macaroni main.c)
+add_executable(ma src/macaroni.c)
+add_executable(las src/lasagn.c)
 
-install(TARGETS macaroni DESTINATION bin)
+install(TARGETS ma DESTINATION bin)
+install(TARGETS las DESTINATION bin)

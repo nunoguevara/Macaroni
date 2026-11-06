@@ -1,12 +1,13 @@
-# Macaroni
-A simple and stupid file creation utility for terminal I made while craving some foods
+# Pazt
+Simple and stupid utilities for terminal I made while craving some foods
 
 ![Static Badge](https://img.shields.io/badge/version-0.1.0-green?style=for-the-badge&logo=GitHub&logoColor=%23ffffff)
 ![GitHub License](https://img.shields.io/github/license/nunoguevara/Macaroni?style=for-the-badge)
 
-## Features
-- Lightweight and minuscule⚡
-- Multi-file creation📂
+## Tools
+There are currently 2 utils available:
+- Macaroni | file(s) creation
+- Lasagna | reading text content of a file
 
 ## Installation
 To install it (though Idk why anyone would install it), you can just build from source especially because it's lightweight
@@ -16,8 +17,8 @@ What you need:
 
 Installation steps:
 ```Shell
-git clone --depth 1 https://github.com/nunoguevara/Macaroni.git
-cd Macaroni
+git clone --depth 1 https://github.com/nunoguevara/Pazt.git
+cd Pazt
 ```
 After that, you can configure your build with (You can customize the configuration to your liking):
 ```Shell
@@ -33,17 +34,3 @@ Or if you need to install it system-wide, you can run:
 cmake --build build
 sudo cmake --install build
 ```
-
-## Usage
-You can use it to create a single file, e.g:
-```Shell
-macaroni textfile.txt
-```
-
-Or even multiple files:
-
-```Shell
-macaroni textfile.txt textfile1.txt textfile2.txt
-```
-
-And it doesn't overwrite existing files, so don't worry!
